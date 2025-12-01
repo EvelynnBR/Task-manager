@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+enum userRole {
+  admin
+  member
+}
+enum statusTasks {
+  pending
+  in_progress
+  completed
+}
+enum priorityTask {
+  high
+  medium
+  low
+}
+
+model User{
+  id String @id @default(uuid())
+
+  name String
+  email String @unique
+  password String
+
+  role userRole @default(member)
+
+  teamsMembers TeamMembers[]
+  assigned Tasks[]
+  changes TasksHistory[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime? @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Teams {
+  id String @id @default(uuid())
+  name String
+  description String
+
+  members TeamMembers[]
+  task Tasks[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("teams")
+}
+
+model TeamMembers {
+  id String @id @default(uuid())
+  teamId String @map("team_id")
+  userId String @map("user_id")
+
+  team Teams @relation(fields: [teamId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("teams_members")
+}
+
+model Tasks {
+  id String @id @default(uuid())
+  title String
+  description String
+
+  assignedId String @map("assigned_to")
+  teamId String @map("team_id")
+
+  status statusTasks @default(pending)
+  priority priorityTask @default(high)
+
+  history TasksHistory[]
+
+  assignedTo User @relation(fields: [assignedId], references: [id])
+  team Teams @relation(fields: [teamId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("tasks")
+}
+
+model TasksHistory {
+  id String @id @default(uuid())
+
+  oldStatus statusTasks
+  newStatus statusTasks
+
+  taskId String @map("task_id")
+  changedId String @map("changed_id")
+
+  task Tasks @relation(fields: [taskId], references: [id])
+  changedBy User @relation(fields: [changedId], references: [id])
+
+  changedAt DateTime @default(now()) @map("changed_at")
+
+  @@map("tasks_history")
+}
