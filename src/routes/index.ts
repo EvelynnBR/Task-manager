@@ -17,7 +17,3 @@ routes.use("/team", teamListRoutes)
 routes.use("/team", teamDeleteRoutes)
 
 export { routes }
-
-
-
-
