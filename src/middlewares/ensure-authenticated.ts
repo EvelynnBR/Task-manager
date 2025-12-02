@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from "express"
 import { AppError } from "@/utils/AppError"
 import { authConfig } from "@/config/auth"
 import { verify } from "jsonwebtoken"
-import { string } from "zod/v4"
 
 interface TokenPayload {
   role: string
@@ -23,11 +22,10 @@ function ensureAuthenticated(req: Request, res: Response, next: NextFunction) {
 
     req.user = {
       id: user_id,
-      role
+      role,
     }
-    
-    return next()
 
+    return next()
   } catch (error) {
     throw new AppError("Invalid JWT token", 401)
   }
