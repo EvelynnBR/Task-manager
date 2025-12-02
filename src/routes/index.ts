@@ -2,7 +2,7 @@ import { Router } from "express"
 import { userRoutes } from "@/routes/user-routes"
 import { sessionRoutes } from "./session-routes"
 
-import { teamRoutes } from "./team-routes/team-routes"
+import { teamRoutes } from "./team-routes/team-create-routes"
 
 const routes = Router()
 
