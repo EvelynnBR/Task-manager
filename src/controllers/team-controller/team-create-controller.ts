@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { prisma } from "@/database/prisma"
 import { z } from "zod"
 
-class TeamController {
+class TeamCreateController {
   async create(req: Request, res: Response) {
     const bodySchema = z.object({
       name: z.string().trim().min(5),
@@ -22,4 +22,4 @@ class TeamController {
   }
 }
 
-export { TeamController }
+export { TeamCreateController }
