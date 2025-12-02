@@ -7,7 +7,7 @@ function verifyUserAuthorization(role: string[]){
       throw new AppError("Unauthorized", 401)
     }
 
-    if (role.includes(req.user.role)){
+    if (!role.includes(req.user.role)){
       throw new AppError("Unauthorized", 401)
     }
 
@@ -15,3 +15,5 @@ function verifyUserAuthorization(role: string[]){
   }
 
 }
+
+export { verifyUserAuthorization}
