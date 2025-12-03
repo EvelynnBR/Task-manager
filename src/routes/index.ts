@@ -8,6 +8,7 @@ import { teamListRoutes } from "./team-routes/team-list-routes"
 import { teamDeleteRoutes } from "./team-routes/team-delete-routes"
 import { teamMemberRoutes } from "./team-routes/team-member-routes"
 import { teamMemberDeleteRoutes } from "./team-routes/team-member-delete-routes"
+import { teamMemberListRoutes } from "./team-routes/team-member-list-routes"
 
 const routes = Router()
 
@@ -19,5 +20,6 @@ routes.use("/team", teamListRoutes)
 routes.use("/team", teamDeleteRoutes)
 routes.use("/team-member", teamMemberRoutes)
 routes.use("/team-member", teamMemberDeleteRoutes)
+routes.use("/team-member", teamMemberListRoutes)
 
 export { routes }
