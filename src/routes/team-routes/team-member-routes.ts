@@ -7,7 +7,7 @@ const teamMemberRoutes = Router()
 const teamMemberController = new TeamMemberController()
 
 teamMemberRoutes.post(
-  "/:id/add-user",
+  "/:id/add-member",
   ensureAuthenticated,
   verifyUserAuthorization(["admin"]),
   teamMemberController.create
