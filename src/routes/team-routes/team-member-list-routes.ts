@@ -7,7 +7,7 @@ const teamMemberListRoutes = Router()
 const teamMemberListController = new TeamMemberListController()
 
 teamMemberListRoutes.get(
-  "/",
+  "/:id/members",
   ensureAuthenticated,
   verifyUserAuthorization(["admin"]),
   teamMemberListController.index
