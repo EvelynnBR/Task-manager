@@ -16,7 +16,7 @@ class TeamMemberDeleteController {
     })
 
     if (!exists) {
-      throw new AppError("Member team not exist", 401)
+      throw new AppError("Member team not exist", 404)
     }
 
     await prisma.teamMembers.delete({
