@@ -9,6 +9,7 @@ import { teamDeleteRoutes } from "./team-routes/team-delete-routes"
 import { teamMemberRoutes } from "./team-routes/team-member-routes"
 import { teamMemberDeleteRoutes } from "./team-routes/team-member-delete-routes"
 import { teamMemberListRoutes } from "./team-routes/team-member-list-routes"
+import { taskCreateRoutes } from "./task-routes/task-create-routes"
 
 const routes = Router()
 
@@ -18,8 +19,11 @@ routes.use("/team", teamCreateRoutes)
 routes.use("/team", teamUpdateRoutes)
 routes.use("/team", teamListRoutes)
 routes.use("/team", teamDeleteRoutes)
+
 routes.use("/team-member", teamMemberRoutes)
 routes.use("/team-member", teamMemberDeleteRoutes)
 routes.use("/team-member", teamMemberListRoutes)
+
+routes.use("/task", taskCreateRoutes)
 
 export { routes }
