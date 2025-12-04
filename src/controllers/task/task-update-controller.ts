@@ -27,7 +27,7 @@ class TaskUpdateController {
     const isAdmin = userFromRole === "admin"
     const isOwner = userFromId === ownerId
 
-    if (!isAdmin && !isOwner){
+    if (!isAdmin && !isOwner) {
       throw new AppError("You can only list tasks for yourself", 403)
     }
 
