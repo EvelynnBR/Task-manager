@@ -14,6 +14,7 @@ import { taskListRoutes } from "./task-routes/task-list-routes"
 import { taskUpdateRoutes } from "./task-routes/task-update-routes"
 import { taskDeleteRoutes } from "./task-routes/task-delete-routes"
 import { taskStatusRoutes } from "./task-routes/task-status-routes"
+import { taskFilterStatusRoutes } from "./task-routes/task-filter-status-routes"
 
 const routes = Router()
 
@@ -33,6 +34,7 @@ routes.use("/task/list", taskListRoutes)
 routes.use("/task/update", taskUpdateRoutes)
 routes.use("/task/delete", taskDeleteRoutes)
 routes.use("/task/status", taskStatusRoutes)
+routes.use("/task/status/filter", taskFilterStatusRoutes)
 
 
 export { routes }
