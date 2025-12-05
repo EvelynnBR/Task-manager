@@ -39,6 +39,7 @@ class TaskListController {
             id: true,
             title: true,
             description: true,
+            status: true
           },
         },
       },
