@@ -9,11 +9,11 @@ class TaskPriorityController {
     const userFromId = req.user.id
 
     const paramsSchema = z.object({
-      id: z.string().uuid()
+      id: z.string().uuid(),
     })
     const { id: userId } = paramsSchema.parse(req.params)
 
-    if(userFromRole !== "admin" && userFromId !== userId){
+    if (userFromRole !== "admin" && userFromId !== userId) {
       throw new AppError("You can only list tasks for yourself", 403)
     }
 
@@ -27,7 +27,7 @@ class TaskPriorityController {
     const task = await prisma.tasks.findUnique({
       where: { id: taskId },
     })
-    
+
     if (!task) {
       throw new AppError("task not found", 404)
     }
