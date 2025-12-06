@@ -17,6 +17,7 @@ import { taskStatusRoutes } from "./task-routes/task-status-routes"
 import { taskFilterStatusRoutes } from "./task-routes/task-filter-status-routes"
 import { taskPriorityRoutes } from "./task-routes/task-priority-routes"
 import { taskFilterPriorityRoutes } from "./task-routes/task-filter-priority-routes"
+import { taskAssignUserRoutes } from "./task-routes/task-assign-user-routes"
 
 const routes = Router()
 
@@ -39,6 +40,7 @@ routes.use("/task/status", taskStatusRoutes)
 routes.use("/task/status/filter", taskFilterStatusRoutes)
 routes.use("/task/priority", taskPriorityRoutes)
 routes.use("/task/priority/filter", taskFilterPriorityRoutes)
+routes.use("/task/assign", taskAssignUserRoutes)
 
 
 export { routes }
