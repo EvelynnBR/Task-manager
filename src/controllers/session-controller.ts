@@ -35,7 +35,7 @@ class SessionController{
       subject: user.id,
       expiresIn
     })
-    return res.json(token)
+    return res.status(200).json(token)
   }
 }
 
