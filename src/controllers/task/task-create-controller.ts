@@ -49,6 +49,15 @@ class TaskCreateController {
       },
     })
 
+    await prisma.tasksHistory.create({
+      data: {
+        taskId: task.id,
+        oldStatus: task.status,
+        newStatus: task.status,
+        changedId: task.assignedId
+      }
+    })
+
     return res.status(201).json({ task })
   }
 }
