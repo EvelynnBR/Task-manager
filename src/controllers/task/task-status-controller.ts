@@ -7,6 +7,7 @@ class TaskStatusController {
   async status(req: Request, res: Response) {
     const userFromRoleToken = req.user.role
     const userFromIdToken = req.user.id
+
     const paramsSchema = z.object({
       id: z.string().uuid(),
     })
@@ -40,9 +41,21 @@ class TaskStatusController {
       throw new AppError("task not found", 404)
     }
 
+    const oldStatus = task.status
+    const newStatus = status
+
     await prisma.tasks.update({
       where: { id: taskId },
       data: { status },
+    })
+
+    await prisma.tasksHistory.create({
+      data: {
+        taskId: taskId,
+        changedId: userId,
+        oldStatus: oldStatus,
+        newStatus: newStatus,
+      },
     })
 
     return res.status(200).json({ message: "OK" })
