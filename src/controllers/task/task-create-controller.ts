@@ -13,7 +13,7 @@ class TaskCreateController {
     })
     const { id: assignedUserId } = paramsSchema.parse(req.params)
 
-    if(useRoleFromToken !== "admin" && userIdFromToken !== assignedUserId){
+    if (useRoleFromToken !== "admin" && userIdFromToken !== assignedUserId) {
       throw new AppError("You can only create tasks for yourself", 403)
     }
 
@@ -54,8 +54,8 @@ class TaskCreateController {
         taskId: task.id,
         oldStatus: task.status,
         newStatus: task.status,
-        changedId: task.assignedId
-      }
+        changedId: task.assignedId,
+      },
     })
 
     return res.status(201).json({ task })
