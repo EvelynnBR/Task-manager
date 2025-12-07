@@ -5,7 +5,8 @@
   "main": "server.ts",
   "scripts": {
     "dev": "tsx watch --env-file .env src/server.ts",
-    "test:dev": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watchAll --runInBand"
+    "test:dev": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watchAll --runInBand",
+    "build": "tsup src --out-dir build"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "bcrypt": "^6.0.0",
     "express": "^5.2.0",
     "jsonwebtoken": "^9.0.2",
+    "tsup": "^8.5.1",
     "zod": "^3.25.76"
   },
   "devDependencies": {
