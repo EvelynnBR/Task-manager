@@ -23,7 +23,7 @@ class UserController {
     })
 
     if (emailExists) {
-      throw new AppError("Email já cadastrado!")
+      throw new AppError("Email já cadastrado!", 409)
     }
 
     const user = await prisma.user.create({
